@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 
-const UpdateScreen = (props, {  route }) => {
+const UpdateScreen = (props, { route }) => {
     const navigation = useNavigation();
     const [todo, setTodo] = useState('todo')
 
@@ -21,13 +21,10 @@ const UpdateScreen = (props, {  route }) => {
                         props.navigation.navigate('AddTodo')
                     );
                 })
-
                 .catch((error) => {
                     console.log(error)
                 });
         }
-
-
     };
     const updateUser = async () => {
         if (item.id) {
@@ -39,8 +36,10 @@ const UpdateScreen = (props, {  route }) => {
                         todo: todo
                     })
                     .then(() => {
-                        props.navigation.navigate('AddTodo')
-                        Alert.alert('Updated successfully')
+
+                        Alert.alert('Updated successfully',
+                            props.navigation.navigate('AddTodo')
+                        );
                     })
             }
             catch (e) {
@@ -50,40 +49,42 @@ const UpdateScreen = (props, {  route }) => {
     }
 
     return (
-        <View  style={{ flex: 1 }}>
-        <View style={{justifyContent: 'center', alignItems: 'center' }}>
-        <View style={{ flexDirection: 'row', marginBottom: 60, marginLeft: 130, height: 50, elevation: 10, justifyContent: 'center', alignItems: 'center'}}>
-        <TouchableOpacity
-                    style={{  width: '30%',
-                    marginTop: 20,marginRight: 10 }}
-                    onPress={() => navigation.navigate('AddTodo')}
-                >
-                    <Image source={require('./images/arrow.png')} style={{ height: 26, width: 26 }} />
-                </TouchableOpacity>
-                <Text style={{fontSize: 22, fontWeight: '600', color: '#000', marginTop: 10, marginRight: 50}}>Update Todo</Text>
-                <TouchableOpacity
-                    style={styles.buttonSubmit}
-                    onPress={() => { updateUser() }}
-                >
-                    <Image source={require('./images/checked.png')} style={{ height: 35, width: 35 }} />
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={styles.buttonSubmit}
-                    onPress={() => { deleteUser() }}
-                >
-                    <Image source={require('./images/trash.png')} style={{ height: 35, width: 35 }} />
-                </TouchableOpacity>
+        <View style={{ flex: 1 }}>
+            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                <View style={{ flexDirection: 'row', marginBottom: 60, marginLeft: 130, height: 50, elevation: 10, justifyContent: 'center', alignItems: 'center' }}>
+                    <TouchableOpacity
+                        style={{
+                            width: '30%',
+                            marginTop: 20, marginRight: 10
+                        }}
+                        onPress={() => navigation.navigate('AddTodo')}
+                    >
+                        <Image source={require('./images/arrow.png')} style={{ height: 25, width: 25 }} />
+                    </TouchableOpacity>
+                    <Text style={{ fontSize: 22, fontWeight: '600', color: '#000', marginTop: 10, marginRight: 50 }}>Update Todo</Text>
+                    <TouchableOpacity
+                        style={styles.buttonSubmit}
+                        onPress={() => { updateUser() }}
+                    >
+                        <Image source={require('./images/checked.png')} style={{ height: 30, width: 30, marginLeft: 20 }} />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={styles.buttonSubmit}
+                        onPress={() => { deleteUser() }}
+                    >
+                        <Image source={require('./images/trash.png')} style={{ height: 30, width: 30, }} />
+                    </TouchableOpacity>
+                </View>
+
+                <TextInput
+                    editable
+                    multiline={true}
+                    numberOfLines={3}
+                    defaultValue={item.todo}
+                    onChangeText={txt => { setTodo(txt) }}
+                    placeholder='Enter data' style={styles.input} />
+
             </View>
-            
-            <TextInput
-                editable
-                multiline={true}
-                numberOfLines={3}
-                defaultValue={item.todo}
-                onChangeText={txt => { setTodo(txt) }}
-                placeholder='Enter data' style={styles.input} />
-            
-        </View>
         </View>
     )
 }

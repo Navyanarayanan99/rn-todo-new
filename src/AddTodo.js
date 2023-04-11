@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, FlatList, TouchableOpacity, Image, RefreshContr
 import React, { useState, useEffect } from 'react'
 import firestore from '@react-native-firebase/firestore';
 import { SearchBar } from 'react-native-elements';
-import { Icon } from 'react-native-elements'
+
 
 const AddItem = ({ navigation }) => {
 
@@ -55,7 +55,7 @@ const AddItem = ({ navigation }) => {
         <View style={{ flex: 1 }}>
             <SearchBar
                 round
-                searchIcon={{ size: 24, }}       
+                searchIcon={{ size: 24, }}
                 placeholder="Search Here..."
                 value={searchQuery}
                 onChangeText={handleSearch}
@@ -70,7 +70,7 @@ const AddItem = ({ navigation }) => {
                             <View style={styles.userCard} key={index} >
 
                                 <Text style={styles.userCardText}>{item.todo}</Text>
-                                <TouchableOpacity zonPress={() => navigation.navigate('UpdateTodo', { item })}>
+                                <TouchableOpacity onPress={() => navigation.navigate('UpdateTodo', { item })}>
                                     <Image source={require('./images/draw.png')} style={{ height: 25, width: 25, marginRight: 20 }} />
                                 </TouchableOpacity>
 
