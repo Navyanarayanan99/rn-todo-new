@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "736621272404",
+    "project_id": "newtodo-bfdd4",
+    "storage_bucket": "newtodo-bfdd4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736621272404:android:0342b0bb008d4ff1c9bcc1",
+        "android_client_info": {
+          "package_name": "com.todonew"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736621272404-lqhmkoggud900d4dakv7g89qhmdd1skm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCq7vGrbQVpNODu8AupclK2se0WIa95D6A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "736621272404-lqhmkoggud900d4dakv7g89qhmdd1skm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
